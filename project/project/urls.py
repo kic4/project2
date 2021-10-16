@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mainpage/', include('mainpage.urls')),
+    path('stock/', include('stock.urls')),
 ]
 
 #파일 업로드를 위한 설정.
