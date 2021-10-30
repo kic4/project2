@@ -5,20 +5,18 @@
 <script>
     function showChart(s){
         if(s=='day'){
-            document.getElementById("chart").src="{% static 'img/hmm_day.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/196170.png?sidcode=1635564497673"
         }
         else if(s=='week'){
-            document.getElementById("chart").src="{% static 'img/hmm_week.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/week/196170.png?sidcode=1635564497673"
         }
         else if(s=='month3'){
-            document.getElementById("chart").src="{% static 'img/hmm_month3.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/month3/196170.png?sidcode=1635564497673"
         }
         else if(s=='year'){
-            document.getElementById("chart").src="{% static 'img/hmm_year.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/year/196170.png?sidcode=1635564497673"
         }
     }
-
-
 </script>
 
 <!-- Begin Page Content -->
@@ -27,7 +25,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">알테오젠</h1>
-        <a target="_blank" href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210817001487" onclick="window.open(this.href, '', 'width=800');
+        <a target="_blank" href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210813000776" onclick="window.open(this.href, '', 'width=800');
                            return false;" class="d-none d-sm-inline-block btn2 btn-sm btn2-primary shadow-sm">
             <i class="fas fa-sm text-white-50"></i>기업 정보</a>
     </div>
@@ -60,7 +58,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <img id="chart" src="{% static 'img/hmm_day.png' %}" style="max-width: 100%; height:auto;">
+                        <img id="chart" src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/196170.png?sidcode=1635564497673" style="max-width:100%; height:auto;" alt="이미지 차트">
                     </div>
                 </div>
             </div>
@@ -117,11 +115,9 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img id="chart" src="{% static 'img/hmm_predict.png' %}" style="max-width: 100%; height:auto;">
+                        <img id="chart2" src="{% static 'img/Alteogen_future5day.png' %}" style="max-width: 100%; height:auto;">
                     </div>
                     <p>&nbsp; 앞으로의 주가는 oo기준일, ooo으로 (상승할것으로/ 떨어질것으로) 예측됩니다.</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매수&rarr;</a>&nbsp;
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매도&rarr;</a>
                 </div>
             </div>
     </div>

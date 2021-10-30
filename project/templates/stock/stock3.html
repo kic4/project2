@@ -5,20 +5,18 @@
 <script>
     function showChart(s){
         if(s=='day'){
-            document.getElementById("chart").src="{% static 'img/hmm_day.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/096530.png?sidcode=1635564497673"
         }
         else if(s=='week'){
-            document.getElementById("chart").src="{% static 'img/hmm_week.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/week/096530.png?sidcode=1635564497673"
         }
         else if(s=='month3'){
-            document.getElementById("chart").src="{% static 'img/hmm_month3.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/month3/096530.png?sidcode=1635564497673"
         }
         else if(s=='year'){
-            document.getElementById("chart").src="{% static 'img/hmm_year.png' %}"
+            document.getElementById("chart").src="https://ssl.pstatic.net/imgfinance/chart/item/area/year/096530.png?sidcode=1635564497673"
         }
     }
-
-
 </script>
 
 <!-- Begin Page Content -->
@@ -27,7 +25,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">씨젠</h1>
-        <a target="_blank" href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210817001884" onclick="window.open(this.href, '', 'width=800');
+        <a target="_blank" href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210813000776" onclick="window.open(this.href, '', 'width=800');
                            return false;" class="d-none d-sm-inline-block btn2 btn-sm btn2-primary shadow-sm">
             <i class="fas fa-sm text-white-50"></i>기업 정보</a>
     </div>
@@ -60,7 +58,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <img id="chart" src="{% static 'img/hmm_day.png' %}" style="max-width: 100%; height:auto;">
+                        <img id="chart" src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/096530.png?sidcode=1635564497673" style="max-width:100%; height:auto;" alt="이미지 차트">
                     </div>
                 </div>
             </div>
@@ -117,11 +115,9 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img id="chart" src="{% static 'img/hmm_predict.png' %}" style="max-width: 100%; height:auto;">
+                        <img id="chart2" src="{% static 'img/hmm_predict.png' %}" style="max-width: 100%; height:auto;">
                     </div>
                     <p>&nbsp; 앞으로의 주가는 oo기준일, ooo으로 (상승할것으로/ 떨어질것으로) 예측됩니다.</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매수&rarr;</a>&nbsp;
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매도&rarr;</a>
                 </div>
             </div>
     </div>
@@ -135,10 +131,11 @@
                 </div>
                 <div class="card-body">
                     <iframe name="news" id="news_frame" title="뉴스 리스트영역" src="https://finance.naver.com/item/news_news.nhn?code=096530&page=1"
-                            width="100%" height="700" marginheight="0" bottommargin="0" topmargin="0" scrolling="no" frameborder="0"></iframe>
+                            width="100%" height="500" marginheight="0" bottommargin="0" topmargin="0" scrolling="no" frameborder="0"></iframe>
                 </div>
                 <p>&nbsp;&nbsp;네이버(주)가 제공하는 금융 정보는 각 콘텐츠 제공업체제공업체 상세설명로부터 받는 투자 참고사항이며, 오류가 발생하거나 지연될 수 있습니다.
 네이버(주)와 콘텐츠 제공업체는 제공된 정보에 의한 투자 결과에 법적인 책임을 지지 않습니다. 게시된 정보는 무단으로 배포할 수 없습니다.</p>
+
             </div>
     </div>
 
