@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% comment '파일위치. 장고 여러줄 주석' %}
+<!-- study1/templates/board/writeform.html
+   http://localhost:8000/board/write/
+   extends "base.html" : writeform.html 페이지는 base.html 페이지의 하위 페이지
+->
+{% endcomment %}
+
+{% block content %}
+ <script type="text/javascript">
+   function inputcheck() {
+	   f = document.f;
+ 	   f.submit();
+   }
+</script>
+<form action="../write/" method="post"   enctype="multipart/form-data" name="f">
+{%  csrf_token  %}
+<table class="w3-table-all"><caption>게시판 글쓰기</caption>
+ <tr><td>글쓴이</td><td><input type="text" name="name"
+                  class="w3-input w3-border"></td></tr>
+ <tr><td>비밀번호</td><td><input type="password" name="pass"
+                  class="w3-input w3-border"></td></tr>
+ <tr><td>제목</td><td><input type="text" name="subject"
+                  class="w3-input w3-border"></td></tr>
+ <tr><td>내용</td><td><textarea rows="15" name="content"
+    id="content" class="w3-input w3-border"></textarea></td></tr>
+ <tr><td>첨부파일</td><td><input type="file" name="file1"></td></tr>
+ <tr><td colspan="2" class="w3-center">
+   <a href="javascript:inputcheck()">[게시물등록]</a></td></tr>
+</table></form>
+{% endblock content %}

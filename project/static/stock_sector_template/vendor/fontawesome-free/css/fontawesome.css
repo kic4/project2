@@ -1350,6 +1350,9 @@ readers do not read off random characters that represent icons */
 .fa-dove:before {
   content: "\f4ba"; }
 
+.fa- fa-plus-square-o {
+  content: "\f196"; }
+
 .fa-download:before {
   content: "\f019"; }
 

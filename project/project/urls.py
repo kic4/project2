@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('mainpage/', include('mainpage.urls')),
     path('stock/', include('stock.urls')),
+    path('order/', include('order.urls')),
+    path('service/', include('service.urls')),
 ]
 
 #파일 업로드를 위한 설정.
