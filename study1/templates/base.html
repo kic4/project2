@@ -1,0 +1,19 @@
+{% comment '기본 html'%}
+<!-- /templates/base.html -->
+{% endcomment %}
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>{% block title %}장고페이지연습{% endblock %}</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head><body>
+<table><tr><td colspan="3" style="text-align:right">
+<tr><td width="15%" valign="top">
+  <a href="/member/main">회원관리</a><br>
+  <a href="/board/list">게시판</a><br>
+</td><td colspan="2" style="text-align: left; vertical-align: top">
+{% block content %}{% endblock %}
+</td></tr>
+<tr><td colspan="3">KIC캠퍼스 </td></tr>
+</table></body></html>
