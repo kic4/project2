@@ -37,7 +37,7 @@ def login(request):
             return render(request, 'member/loginform.html',{"errormsg":"아이디가 틀립니다."})
 
 def main(request):
-        return render(request, 'member/main.html')
+        return render(request, 'member/index.html')
 
 def logout(request):
     auth.logout(request)  #로그아웃

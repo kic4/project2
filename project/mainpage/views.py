@@ -3,4 +3,4 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 
 def main(request):
-    return render(request, 'mainpage/main.html')
+    return render(request, 'mainpage/index.html')
