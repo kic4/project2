@@ -402,13 +402,13 @@ button[class*="btn"] {border: 0;}
     border-bottom-left-radius: 5px;
     margin-left-3px;
 }
-.btn_group button{
+.btn_group a{
     border:1px solid skyblue;
     background-color:rgba(0,0,0,0);
     color:skyblue;
     padding: 5px;
 }
-.btn_group button:hover{
+.btn_group a:hover{
     color:white;
     background-color:skyblue;
 }
