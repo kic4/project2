@@ -4,130 +4,185 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">오늘의 증시</h1>
+    </div>
+    <!-- Kospi, Kosdac-->
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-lg-6 mb-4">
+            <!-- Kospi -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">KOSPI</h6>
+                </div>
+                <div class="card-body">
+                    <div class="stock" id="">
+                        <div class="DOMESTIC">
+                            <p>
+                                <strong data-realtime-trade-price="yes" style="font-size:1.5em;">코스피지수</strong>
+                            </p>
+                            <span class="num up" data-realtime-change-style="yes">
+                                <div style="float:left;">
+                                <strong data-realtime-trade-price="yes" style="font-size:3em;">2,978.51</strong>
+                                </div>
+                                <div style="float:left;vertical-align:bottom;padding:10px;">
+                                    <p data-realtime-change-price="yes" style="font-size:1.3em;"><i>▲</i>7.83</p>
+                                </div>
+                                <div style="float:left;">
+                                <p data-realtime-change-ratio="yes" style="font-size:1.3em;padding:10px;">+0.26%</p>
+                                </div>
+                            </span>
+                            <a href="#"><img
+                                    src="https://t1.daumcdn.net/finance/chart/kr/daumindex/i/D0011001.png?t=202111011042"
+                                    alt="일별 차트"></a>
+                            <span class="txt" style="font-size:1.1em;">
+                            <div style="float: left; width: 33%; padding:10px;">
+                                개인<p class="down">-1,159억</p>
+                            </div>
+                            <div style="float: left; width: 33%; padding:10px;">
+                                기관<p class="up">3,148억</p>
+                            </div>
+                            <div style="float: left; width: 33%; padding:10px;">
+                                외국인<p class="down">-1,900억</p>
+                            </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <!-- Kosdac -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">KOSDAQ</h6>
+                </div>
+                <div class="card-body">
+                    <div class="DOMESTIC" style="display:block;">
+                        <p><strong style="font-size:1.5em;">코스닥 지수</strong></p>
+                        <span class="num up" data-realtime-change-style="yes">
+                           <div style="float:left;">
+                               <strong data-realtime-trade-price="yes" style="font-size:3em;">997.07</strong>
+                           </div>
+                           <div style="float:left;vertical-align:bottom;padding:10px;">
+                               <p data-realtime-change-price="yes" style="font-size:1.3em;"><i>▲</i>4.74</p>
+                           </div>
+                           <div style="float:left;">
+                               <p data-realtime-change-ratio="yes" style="font-size:1.3em;padding:10px;">+0.48%</p>
+                           </div>
+                       </span>
+                        <a href="#"><img
+                                src="https://t1.daumcdn.net/finance/chart/kr/daumindex/i/E4012001.png?t=202111011042"
+                                alt="일별 차트"></a>
+                        <span class="txt">
+                            <span class="txt" style="font-size:1.1em;">
+                            <div style="float: left; width: 33%; padding:10px;">
+                                개인<p class="down">-309억</p>
+                            </div>
+                            <div style="float: left; width: 33%; padding:10px;">
+                                기관<p class="up">544억</p>
+                            </div>
+                            <div style="float: left; width: 33%; padding:10px;">
+                                외국인<p class="down">-92억</p>
+                            </div>
+                        </span>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+
+    </div>
+
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">오늘의 추천 종목!</h1>
+        <h1 class="h3 mb-0 text-gray-800">추천 종목 키워드 (3개월)</h1>
+        <div>
+        <i class="fas fa-circle" style="color:blue;"></i> #긍정
+        <i class="fas fa-circle" style="color:red;"></i> #부정
+        <i class="fas fa-circle" style="color:yellow;"></i> #중립
+        </div>
     </div>
 
     <!-- Content Row -->
     <div class="row">
-        <!-- Pie Chart1 -->
+        <!-- Keyword(HMM) -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">오늘의 의견!  <sup>*참고*</sup></h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
+                    <h6 class="m-0 font-weight-bold text-primary">HMM</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
+                    <img id="keyword1" src="{% static 'img/Hmm-keyword2.jpg' %}" style="max-width:100%; height:233px;"
+                         alt="알테오젠-키워드">
                     <div class="mt-4 text-center small">
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-primary"></i> 긍정
-                                            </span>
                         <span class="mr-2">
-                                                <i class="fas fa-circle text-success"></i> 부정
-                                            </span>
+                            <i class="fas fa-circle" style="color:red;"></i> #파업
+                        </span>
                         <span class="mr-2">
-                                                <i class="fas fa-circle text-info"></i> 키워드
-                                            </span>
+                            <i class="fas fa-circle" style="color:red;"></i> #노조
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle" style="color:red;"></i> #노사
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Pie Chart2 -->
+        <!-- Keyword(Alteogen) -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">오늘의 의견!  <sup>*참고*</sup></h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
+                    <h6 class="m-0 font-weight-bold text-primary">알테오젠</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
+                    <img id="keyword2" src="{% static 'img/alteogen-keyword.png' %}"
+                         style="max-width:100%; height:230px;" alt="알테오젠-키워드">
                     <div class="mt-4 text-center small">
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-primary"></i> 긍정
-                                            </span>
                         <span class="mr-2">
-                                                <i class="fas fa-circle text-success"></i> 부정
-                                            </span>
+                            <i class="fas fa-circle" style="color:blue;"></i> #승인
+                        </span>
                         <span class="mr-2">
-                                                <i class="fas fa-circle text-info"></i> 키워드
-                                            </span>
+                            <i class="fas fa-circle" style="color:yellow;"></i> #바이오
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle" style="color:yellow;"></i> #히알루로니다제
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Pie Chart3 -->
+        <!-- Keyword(Seegene) -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">오늘의 의견!  <sup>*참고*</sup></h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
+                    <h6 class="m-0 font-weight-bold text-primary">씨젠</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
+                    <img id="keyword3" src="{% static 'img/Seegene-keyword.png' %}" style="max-width:100%; height:auto;"
+                         alt="알테오젠-키워드">
                     <div class="mt-4 text-center small">
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-primary"></i> 긍정
-                                            </span>
                         <span class="mr-2">
-                                                <i class="fas fa-circle text-success"></i> 부정
-                                            </span>
+                            <i class="fas fa-circle" style="color:yellow;"></i> #진단
+                        </span>
                         <span class="mr-2">
-                                                <i class="fas fa-circle text-info"></i> 키워드
-                                            </span>
+                            <i class="fas fa-circle" style="color:red;"></i> #코로나
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle" style="color:yellow;"></i> #델타
+                        </span>
                     </div>
                 </div>
             </div>

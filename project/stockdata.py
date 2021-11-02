@@ -97,4 +97,4 @@ if __name__ == "__main__" :
 
     trade.rq_chart_data("196170", "20211016", 1)
     df_day_data=pandas.DataFrame(trade.day_data, columns=['date','open','high','low','close','volume','trade_volume'])
-    print(df_day_data)
+    df_day_data.to_csv('hmm-data')
