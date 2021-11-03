@@ -85,15 +85,15 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
 
-    # #maria DB
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'kicdb',
-    #     'USER': 'kic',
-    #     'PASSWORD': '1234',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306'
-    # }
+    #maria DB
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kicdb',
+        'USER': 'kic',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '3307'
+    }
 }
 
 
