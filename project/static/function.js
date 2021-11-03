@@ -23,9 +23,3 @@ function nodeScriptClone(node){
 function nodeScriptIs(node) {
     return node.tagName === 'SCRIPT';
 }
-function selectEnter(s){
-    if(s=='HMM'){
-        const html = document.getElementById("graph");
-        html.innerHTML= "
-    }
-}

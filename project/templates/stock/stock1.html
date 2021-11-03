@@ -18,6 +18,8 @@
         }
     }
 
+
+
 </script>
 
 <!-- Begin Page Content -->
@@ -67,31 +69,18 @@
             </div>
         </div>
 
-        <!-- Pie Chart -->
+        <!-- 의견 -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+                <!-- 의견 Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">오늘의 의견! <sup>*참고*</sup></h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
+                    <h6 class="m-0 font-weight-bold text-primary">이번주 의견! <sup>*참고*</sup></h6>
                 </div>
-                <!-- Card Body -->
+                <!-- 의견 Body -->
                 <div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
+                        <canvas id="hmmChart"></canvas>
+                        <span style="position:relative;left:100px;bottom:150px;font-size:2.5em;color:blue;">Good!</span>
                     </div>
                     <div class="mt-4 text-center small">
                                             <span class="mr-2">
@@ -100,9 +89,8 @@
                         <span class="mr-2">
                                                 <i class="fas fa-circle text-success"></i> 부정
                                             </span>
-                        <span class="mr-2">
-                                                <i class="fas fa-circle text-info"></i> 키워드
-                                            </span>
+                    <hr>
+                    <p> 11월 3일까지 주가가 떨어질것으로 예상되나 이후로 11월5일자까지 오를것으로 예상됩니다. </p>
                     </div>
                 </div>
             </div>
@@ -118,9 +106,60 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    <img id="chart2" src="{% static 'img/hmm_future5day.png' %}" style="max-width: 100%; height:auto;">
+                    <img id="chart2" src="{% static 'img/HMM_future5day.png' %}" style="max-width: 100%; height:auto;">
                 </div>
-                <p>&nbsp; 앞으로의 주가는 oo기준일, ooo으로 (상승할것으로/ 떨어질것으로) 예측됩니다.</p>
+                <hr>
+                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+                       aria-describedby="dataTable_info" style="width: 100%;">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            style="width: 57px;">일(day)
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            style="width: 57px;">11월 1일
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            style="width: 57px;">11월 2일
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            style="width: 57px;">11월 3일
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            style="width: 57px;">11월 4일
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            style="width: 57px;">11월 5일
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="color:orange;font-weight:bold">예측가</td>
+                        <td>26710</td>
+                        <td>26660</td>
+                        <td>26650</td>
+                        <td>26720</td>
+                        <td>26850</td>
+                    </tr>
+                    <tr>
+                        <td style="color:red;font-weight:bold">예측상한가</td>
+                        <td>28340</td>
+                        <td>29000</td>
+                        <td>29550</td>
+                        <td>30090</td>
+                        <td>30610</td>
+                    </tr>
+                    <tr>
+                        <td style="color:green;font-weight:bold">예측하한가</td>
+                        <td>25090</td>
+                        <td>24320</td>
+                        <td>23750</td>
+                        <td>23350</td>
+                        <td>23090</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

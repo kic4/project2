@@ -1,95 +1,55 @@
 {% extends "base2.html" %}
 {% block content %}
 {% load static %}
-<!-- predictDay1 : 내일, 3일, 5일 예상주가 문구
-         predictDay2 : 예상주가
-         predictDay3 : 현재주가
-         predictDay4 : 예상수익률
-         predictDay : 현재주가(10월 22일)로 이름 수정(알테오젠 관련)
-    -->
 <script type="text/javascript">
-    var stock;
-
     function selectEnter(s){
         if(s=='HMM'){
-            document.getElementById("candle-chart").src="{% static 'img/hmm-chart.png' %}"
-            document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
-            document.getElementById("predictDay2").innerText = "$26,650";
-            document.getElementById("predictDay3").innerText = "$26,650";
-            document.getElementById("predictDay4").innerText = "0%";
-            stock = s;
+            document.getElementById("candle-chart").src="{% static 'img/undraw_profile_1.svg' %}"
         }
         if(s=='알테오젠'){
-            document.getElementById("candle-chart").src="{% static 'img/ALteogen-chart.png' %}"
-            document.getElementById("predictDay1").innerText = "내일 예상주가(10.25)";
-            document.getElementById("predictDay2").innerText = "$72,800";
-            document.getElementById("predictDay3").innerText = "$73,000";
-            document.getElementById("predictDay4").innerText = "-0.27%";
-            stock = s;
+            document.getElementById("candle-chart").src="{% static 'img/alteogen-chart.png' %}"
         }
         if(s=='씨젠'){
             document.getElementById("candle-chart").src="{% static 'img/Seegene-chart.png' %}"
-            document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
-            document.getElementById("predictDay2").innerText = "$54,350";
-            document.getElementById("predictDay3").innerText = "$53,200";
-            document.getElementById("predictDay4").innerText = "2.16%";
-            stock = s;
+            document.getElementById("predictDay1").innerText = "내일 예상주가";
+            document.getElementById("predictDay2").innerText = "$230,000";
+            document.getElementById("predictDay3").innerText = "$215,000";
+            document.getElementById("predictDay4").innerText = "3%";
         }
     }
 
-    function stockPrice(d){
-        if(stock=='HMM'){
-            if(d=='day1'){
-              document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
-              document.getElementById("predictDay2").innerText = "$26,650";
-              document.getElementById("predictDay4").innerText = "0%";
-            }
-            if(d=='day3'){
-              document.getElementById("predictDay1").innerText = "3일뒤의 예상주가(11.03)";
-              document.getElementById("predictDay2").innerText = "$26,700";
-              document.getElementById("predictDay4").innerText = "0.19%";
-            }
-            if(d=='day5'){
-              document.getElementById("predictDay1").innerText = "5일뒤의 예상주가(11.05)";
-              document.getElementById("predictDay2").innerText = "$26,850";
-              document.getElementById("predictDay4").innerText = "0.75%";
-            }
+
+
+
+
+
+
+
+</script>
+<script>
+    function stockPrice(s){
+        if(s=='day1'){
+          document.getElementById("predictDay1").innerText = "내일 예상주가";
+          document.getElementById("predictDay2").innerText = "$230,000";
+          document.getElementById("predictDay4").innerText = "3%";
         }
-        else if(stock=='알테오젠'){
-            if(d=='day1'){
-              document.getElementById("predictDay1").innerText = "내일 예상주가(10.25)";
-              document.getElementById("predictDay2").innerText = "$72,800";
-              document.getElementById("predictDay4").innerText = "-0.27%";
-            }
-            if(d=='day3'){
-              document.getElementById("predictDay1").innerText = "3일뒤의 예상주가(10.27)";
-              document.getElementById("predictDay2").innerText = "$72,350";
-              document.getElementById("predictDay4").innerText = "-0.89%";
-            }
-            if(d=='day5'){
-              document.getElementById("predictDay1").innerText = "5일뒤의 예상주가(10.29)";
-              document.getElementById("predictDay2").innerText = "$71,850";
-              document.getElementById("predictDay4").innerText = "-1.58%";
-            }
+        if(s=='day3'){
+          document.getElementById("predictDay1").innerText = "3일뒤의 예상주가";
+          document.getElementById("predictDay2").innerText = "$230,000";
+          document.getElementById("predictDay4").innerText = "5%";
         }
-        else if(stock=='씨젠'){
-            if(d=='day1'){
-              document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
-              document.getElementById("predictDay2").innerText = "$54,350";
-              document.getElementById("predictDay4").innerText = "2.16%";
-            }
-            if(d=='day3'){
-              document.getElementById("predictDay1").innerText = "3일뒤의 예상주가(11.03)";
-              document.getElementById("predictDay2").innerText = "$54,400";
-              document.getElementById("predictDay4").innerText = "2.26%";
-            }
-            if(d=='day5'){
-              document.getElementById("predictDay1").innerText = "5일뒤의 예상주가(11.05)";
-              document.getElementById("predictDay2").innerText = "$54,500";
-              document.getElementById("predictDay4").innerText = "2.44%";
-            }
+        if(s=='day5'){
+          document.getElementById("predictDay1").innerText = "5일뒤의 예상주가";
+          document.getElementById("predictDay2").innerText = "$240,000";
+          document.getElementById("predictDay4").innerText = "8%";
         }
     }
+
+
+
+
+
+
 
 </script>
 
@@ -118,10 +78,9 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    <img id="candle-chart" src="{% static 'img/standby-screen.png' %}" style="max-width:100%; height:auto;">
+                    <img id="candle-chart" src="" style="max-width:100%; height:auto;">
                 </div>
             </div>
-
             <!-- 현재주가, 예상주가, 예상수익률 -->
             <div style="display:line-block;">
                 <!--1일, 3일, 5일 버튼-->
@@ -147,9 +106,9 @@
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
                                          id="predictDay1"
                                          style="font-size:1em;">
-                                        내일 예상 주가(11.01)
+                                        내일 예상 주가
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay2">d</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay2"></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -166,8 +125,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                                         style="font-size:1em;" id="predictDay">
-                                        현재주가(10월 29일 기준)
+                                         style="font-size:1em;">
+                                        현재 주가
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay3"></div>
                                 </div>
@@ -198,10 +157,91 @@
                         </div>
                     </div>
                 </div>
-
+                
             </div>
         </div>
     </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-xl-8 col-lg-7">
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <!-- 종목 선택 -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">주가 차트</h6>
+                    <div class="selectBox">
+                        <select name="enterprise" class="select" onchange="selectEnter(this.value)">
+                            <option>기업선택</option>
+                            <option value="HMM">HMM</option>
+                            <option value="알테오젠">알테오젠</option>
+                            <option value="씨젠">씨젠</option>
+                        </select>
+                        <span class="icoArrow">
+                            <img src="{% static 'img/arrow.png' %}">
+                        </span>
+                    </div>
+                </div>
+                <!-- 선정한 기업의 차트 영역-->
+                <div class="card-body">
+                    <div id="graph-chart" class="chart-area">
+                        <div id="graph" style="width:50vw;height:350px;">
+                            <img id="candle-chart" src="" style="max-width:100%; height:330px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 현재주가, 예상주가, 예상수익률 -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                 style="font-size:1em;">
+                                현재 주가
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="chart_button mb-3">
+                        <ul>
+                            <li class="day">
+                                <a href="#" class="btn-gradient green mini" onclick="stockPrice('day1')">1일</a>
+                            </li>
+                            <li class="week">
+                                <a href="#" class="btn-gradient cyan mini" onclick="stockPrice('day3')">3일</a>
+                            </li>
+                            <li class="month3">
+                                <a href="#" class="btn-gradient blue mini" onclick="stockPrice('day5')">5일</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-2" id="predictDay1"
+                         style="font-size:1em;">
+                        내일 예상주가
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay2">$215,000</div>
+                    <hr>
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-2"
+                         style="font-size:1em;">
+                        예상 수익률(%)
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay3">3%</div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
 
 </div>
 <!-- /.container-fluid -->

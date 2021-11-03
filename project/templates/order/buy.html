@@ -1,23 +1,95 @@
 {% extends "base2.html" %}
 {% block content %}
 {% load static %}
-<!-- 1일, 1주일, 3개월, 1년 기준 차트-->
-<script>
-    function showChart(s){
-        if(s=='day'){
-            document.getElementById("chart").src="{% static 'img/hmm_day.png' %}"
+<!-- predictDay1 : 내일, 3일, 5일 예상주가 문구
+         predictDay2 : 예상주가
+         predictDay3 : 현재주가
+         predictDay4 : 예상수익률
+         predictDay : 현재주가(10월 22일)로 이름 수정(알테오젠 관련)
+    -->
+<script type="text/javascript">
+    var stock;
+
+    function selectEnter(s){
+        if(s=='HMM'){
+            document.getElementById("candle-chart").src="{% static 'img/hmm-chart.png' %}"
+            document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
+            document.getElementById("predictDay2").innerText = "$26,650";
+            document.getElementById("predictDay3").innerText = "$26,650";
+            document.getElementById("predictDay4").innerText = "0%";
+            stock = s;
         }
-        else if(s=='week'){
-            document.getElementById("chart").src="{% static 'img/hmm_week.png' %}"
+        if(s=='알테오젠'){
+            document.getElementById("candle-chart").src="{% static 'img/ALteogen-chart.png' %}"
+            document.getElementById("predictDay1").innerText = "내일 예상주가(10.25)";
+            document.getElementById("predictDay2").innerText = "$72,800";
+            document.getElementById("predictDay3").innerText = "$73,000";
+            document.getElementById("predictDay4").innerText = "-0.27%";
+            stock = s;
         }
-        else if(s=='month3'){
-            document.getElementById("chart").src="{% static 'img/hmm_month3.png' %}"
-        }
-        else if(s=='year'){
-            document.getElementById("chart").src="{% static 'img/hmm_year.png' %}"
+        if(s=='씨젠'){
+            document.getElementById("candle-chart").src="{% static 'img/Seegene-chart.png' %}"
+            document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
+            document.getElementById("predictDay2").innerText = "$54,350";
+            document.getElementById("predictDay3").innerText = "$53,200";
+            document.getElementById("predictDay4").innerText = "2.16%";
+            stock = s;
         }
     }
 
+    function stockPrice(d){
+        if(stock=='HMM'){
+            if(d=='day1'){
+              document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
+              document.getElementById("predictDay2").innerText = "$26,650";
+              document.getElementById("predictDay4").innerText = "0%";
+            }
+            if(d=='day3'){
+              document.getElementById("predictDay1").innerText = "3일뒤의 예상주가(11.03)";
+              document.getElementById("predictDay2").innerText = "$26,700";
+              document.getElementById("predictDay4").innerText = "0.19%";
+            }
+            if(d=='day5'){
+              document.getElementById("predictDay1").innerText = "5일뒤의 예상주가(11.05)";
+              document.getElementById("predictDay2").innerText = "$26,850";
+              document.getElementById("predictDay4").innerText = "0.75%";
+            }
+        }
+        else if(stock=='알테오젠'){
+            if(d=='day1'){
+              document.getElementById("predictDay1").innerText = "내일 예상주가(10.25)";
+              document.getElementById("predictDay2").innerText = "$72,800";
+              document.getElementById("predictDay4").innerText = "-0.27%";
+            }
+            if(d=='day3'){
+              document.getElementById("predictDay1").innerText = "3일뒤의 예상주가(10.27)";
+              document.getElementById("predictDay2").innerText = "$72,350";
+              document.getElementById("predictDay4").innerText = "-0.89%";
+            }
+            if(d=='day5'){
+              document.getElementById("predictDay1").innerText = "5일뒤의 예상주가(10.29)";
+              document.getElementById("predictDay2").innerText = "$71,850";
+              document.getElementById("predictDay4").innerText = "-1.58%";
+            }
+        }
+        else if(stock=='씨젠'){
+            if(d=='day1'){
+              document.getElementById("predictDay1").innerText = "내일 예상주가(11.01)";
+              document.getElementById("predictDay2").innerText = "$54,350";
+              document.getElementById("predictDay4").innerText = "2.16%";
+            }
+            if(d=='day3'){
+              document.getElementById("predictDay1").innerText = "3일뒤의 예상주가(11.03)";
+              document.getElementById("predictDay2").innerText = "$54,400";
+              document.getElementById("predictDay4").innerText = "2.26%";
+            }
+            if(d=='day5'){
+              document.getElementById("predictDay1").innerText = "5일뒤의 예상주가(11.05)";
+              document.getElementById("predictDay2").innerText = "$54,500";
+              document.getElementById("predictDay4").innerText = "2.44%";
+            }
+        }
+    }
 
 </script>
 
@@ -25,126 +97,116 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">종목명</h1>
-        <a target="_blank" href="#" onclick="window.open(this.href, '', 'width=800, height=400');
-                           return false;" class="d-none d-sm-inline-block btn2 btn-sm btn-primary shadow-sm">
-            <i class="fas fa-sm text-white-50"></i>기업 정보</a>
-    </div>
-
-    <!-- Content Row1 -->
+    <h1 class="h3 mb-2 text-gray-800">매수</h1>
+    <!-- Content Row -->
     <div class="row">
         <!-- Chart 영역 -->
-        <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">주가 차트</h6>
-                    <div class="chart_button">
-                        <ul>
-                            <li class="day">
-                                <a href="#" class="btn-gradient green mini" onclick="showChart('day')">1일</a>
-                            </li>
-                            <li class="week">
-                                <a href="#" class="btn-gradient cyan mini" onclick="showChart('week')">1주일</a>
-                            </li>
-                            <li class="month3">
-                                <a href="#" class="btn-gradient blue mini" onclick="showChart('month3')">3개월</a>
-                            </li>
-                            <li class="year">
-                                <a href="#" class="btn-gradient purple mini" onclick="showChart('year')">1년</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-area">
-                        <img id="chart" src="{% static 'img/hmm_day.png' %}" style="max-width: 100%; height:auto;">
-                    </div>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">주가 차트</h6>
+                <div class="selectBox">
+                    <select name="enterprise" class="select" onchange="selectEnter(this.value)">
+                        <option>기업선택</option>
+                        <option value="HMM">HMM</option>
+                        <option value="알테오젠">알테오젠</option>
+                        <option value="씨젠">씨젠</option>
+                    </select>
+                    <span class="icoArrow">
+                            <img src="{% static 'img/arrow.png' %}">
+                        </span>
                 </div>
             </div>
-        </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img id="candle-chart" src="{% static 'img/standby-screen.png' %}" style="max-width:100%; height:auto;">
+                </div>
+            </div>
 
-        <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">오늘의 의견!  <sup>*참고*</sup></h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+            <!-- 현재주가, 예상주가, 예상수익률 -->
+            <div style="display:line-block;">
+                <!--1일, 3일, 5일 버튼-->
+                <div class="chart_button mb-3" style="position:relative;left:10px;">
+                    <ul>
+                        <li class="day">
+                            <a href='javascript:void(0);' class="btn-gradient green mini" onclick="stockPrice('day1')">1일</a>
+                        </li>
+                        <li class="week">
+                            <a href='javascript:void(0);' class="btn-gradient cyan mini" onclick="stockPrice('day3')">3일</a>
+                        </li>
+                        <li class="month3">
+                            <a href='javascript:void(0);' class="btn-gradient blue mini" onclick="stockPrice('day5')">5일</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 예상주가-->
+                <div class="col-xl-3 col-md-6 mb-4" style="float:left;">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                         id="predictDay1"
+                                         style="font-size:1em;">
+                                        내일 예상 주가(11.01)
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay2">d</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-primary"></i> 긍정
-                                            </span>
-                        <span class="mr-2">
-                                                <i class="fas fa-circle text-success"></i> 부정
-                                            </span>
-                        <span class="mr-2">
-                                                <i class="fas fa-circle text-info"></i> 키워드
-                                            </span>
+
+                <!-- 현재주가-->
+                <div class="col-xl-3 col-md-6 mb-4" style="float:left;">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                         style="font-size:1em;" id="predictDay">
+                                        현재주가(10월 29일 기준)
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay3"></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 예상수익률-->
+                <div class="col-xl-3 col-md-6 mb-4" style="float:left;">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                         style="font-size:1em;">
+                                        예상 수익률(%)
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="predictDay4"></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-
-    <!-- Content Row2 -->
-    <div class="row">
-        <!-- Chart2 영역 -->
-        <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">주가 예측</h6>
-                </div>
-                <div class="card-body">
-                    <div class="text-center">
-                        <img id="chart" src="{% static 'img/hmm_predict.png' %}" style="max-width: 100%; height:auto;">
-                    </div>
-                    <p>&nbsp; 앞으로의 주가는 oo기준일, ooo으로 (상승할것으로/ 떨어질것으로) 예측됩니다.</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매수&rarr;</a>&nbsp;
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매도&rarr;</a>
-                </div>
-            </div>
-    </div>
-
-    <!-- Content Row3 -->
-    <div class="row">
-        <!-- News 영역-->
-        <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">종목 뉴스</h6>
-                </div>
-                <div class="card-body">
-                    <iframe name="news" id="news_frame" title="뉴스 리스트영역" src="https://finance.naver.com/item/news_news.nhn?code=011200&page=1"
-                            width="100%" height="700" marginheight="0" bottommargin="0" topmargin="0" scrolling="no" frameborder="0"></iframe>
-                </div>
-                <p>&nbsp;&nbsp;네이버(주)가 제공하는 금융 정보는 각 콘텐츠 제공업체제공업체 상세설명로부터 받는 투자 참고사항이며, 오류가 발생하거나 지연될 수 있습니다.
-네이버(주)와 콘텐츠 제공업체는 제공된 정보에 의한 투자 결과에 법적인 책임을 지지 않습니다. 게시된 정보는 무단으로 배포할 수 없습니다.</p>
-            </div>
     </div>
 
 </div>
 <!-- /.container-fluid -->
 
 </div>
+
 <!-- End of Main Content -->
 {% endblock %}
