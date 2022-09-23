@@ -1,0 +1,148 @@
+{% extends "base2.html" %}
+{% block content %}
+{% load static %}
+<!-- 1일, 1주일, 3개월, 1년 기준 차트-->
+<script>
+    function showChart(s){
+        if(s=='day'){
+            document.getElementById("chart").src="{% static 'img/hmm_day.png' %}"
+        }
+        else if(s=='week'){
+            document.getElementById("chart").src="{% static 'img/hmm_week.png' %}"
+        }
+        else if(s=='month3'){
+            document.getElementById("chart").src="{% static 'img/hmm_month3.png' %}"
+        }
+        else if(s=='year'){
+            document.getElementById("chart").src="{% static 'img/hmm_year.png' %}"
+        }
+    }
+</script>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">HMM</h1>
+        <a target="_blank" href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210813000776" onclick="window.open(this.href, '', 'width=800');
+                           return false;" class="d-none d-sm-inline-block btn2 btn-sm btn2-primary shadow-sm">
+            <i class="fas fa-sm text-white-50"></i>기업 정보</a>
+    </div>
+
+    <!-- Content Row1 -->
+    <div class="row">
+        <!-- Chart 영역 -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">주가 차트</h6>
+                    <div class="chart_button">
+                        <ul>
+                            <li class="day">
+                                <a href="#" class="btn-gradient green mini" onclick="showChart('day')">1일</a>
+                            </li>
+                            <li class="week">
+                                <a href="#" class="btn-gradient cyan mini" onclick="showChart('week')">1주일</a>
+                            </li>
+                            <li class="month3">
+                                <a href="#" class="btn-gradient blue mini" onclick="showChart('month3')">3개월</a>
+                            </li>
+                            <li class="year">
+                                <a href="#" class="btn-gradient purple mini" onclick="showChart('year')">1년</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <img id="chart" src="{% static 'img/hmm_day.png' %}" style="max-width: 100%; height:auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">오늘의 의견!  <sup>*참고*</sup></h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle text-primary"></i> 긍정
+                                            </span>
+                        <span class="mr-2">
+                                                <i class="fas fa-circle text-success"></i> 부정
+                                            </span>
+                        <span class="mr-2">
+                                                <i class="fas fa-circle text-info"></i> 키워드
+                                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row2 -->
+    <div class="row">
+        <!-- Chart2 영역 -->
+        <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">주가 예측</h6>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <img id="chart" src="{% static 'img/hmm_predict.png' %}" style="max-width: 100%; height:auto;">
+                    </div>
+                    <p>&nbsp; 앞으로의 주가는 oo기준일, ooo으로 (상승할것으로/ 떨어질것으로) 예측됩니다.</p>
+                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매수&rarr;</a>&nbsp;
+                    <a target="_blank" rel="nofollow" href="https://undraw.co/">매도&rarr;</a>
+                </div>
+            </div>
+    </div>
+
+    <!-- Content Row3 -->
+    <div class="row">
+        <!-- News 영역-->
+        <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">종목 뉴스</h6>
+                </div>
+                <div class="card-body">
+                    <iframe name="news" id="news_frame" title="뉴스 리스트영역" src="https://finance.naver.com/item/news_news.nhn?code=011200&page=1"
+                            width="100%" height="700" marginheight="0" bottommargin="0" topmargin="0" scrolling="no" frameborder="0"></iframe>
+                </div>
+                <p>&nbsp;&nbsp;네이버(주)가 제공하는 금융 정보는 각 콘텐츠 제공업체제공업체 상세설명로부터 받는 투자 참고사항이며, 오류가 발생하거나 지연될 수 있습니다.
+네이버(주)와 콘텐츠 제공업체는 제공된 정보에 의한 투자 결과에 법적인 책임을 지지 않습니다. 게시된 정보는 무단으로 배포할 수 없습니다.</p>
+            </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}
